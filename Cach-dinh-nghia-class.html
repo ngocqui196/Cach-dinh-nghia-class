@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3 Cách định nghĩa class</title>
+</head>
+<body>
+<script>
+    // Cách 1:Khai báo lớp Apple với các thuộc tính type, color,phương thức getAppleInfo()
+    function Apple (type) {
+        this.type = type;
+        this.color = "red";
+        this.getInfo = function() {
+            return this.color + ' ' + this.type + ' apple';
+        };
+    }
+    //Để khởi tạo một đối tượng sử dụng hàm khởi tạo Apple, gán giá trị cho các thuộc tính và gọi phương thức bạn có thể làm như sau:
+        let apple = new Apple('macintosh');
+    apple.color = "reddish";
+    alert(apple.getInfo());
+
+    // Cách 2: Sử dụng object literals. Cách này bỏ qua khai báo lớp và tạo ra 1 đối tượng ngay tức khắc:
+    let banana = {
+        type: "macintosh",
+        color: "yellow",
+        getInfo: function () {
+            return this.color + ' ' + this.type + ' banana';
+        }
+    }
+    //Với cách này, bạn không cần (và không thể) khởi tạo đối tượng của lớp vì đơn giản là nó đã tồn tại. Vì vậy bạn chỉ cần bắt đầu sử dụng đối tượng này thôi.
+
+        banana.color = "yellower";
+    alert(banana.getInfo());
+
+
+    // Cách 3: Singleton sử dụng một hàm:
+    let apricot = new function() {
+        this.type = "macintosh";
+        this.color = "red";
+        this.getInfo = function () {
+            return this.color + ' ' + this.type + ' apricot';
+        };
+    }
+    //Cách này có vẻ giống với 1 mô tả ở trên, nhưng cách để sử dụng đối tượng thì lại giống cách 2.
+
+    apricot.color = "reddish";
+    alert(apricot.getInfo());
+</script>
+</body>
+</html>
